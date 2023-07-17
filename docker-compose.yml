@@ -1,0 +1,30 @@
+version: '3.12.1'
+services:
+  rabbitmq1:
+    image: rabbitmq:3.12.1-management
+    container_name: rabbitmq1
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=cola
+      - RABBITMQ_DEFAULT_USER=eddy
+      - RABBITMQ_DEFAULT_PASS=1170170
+    volumes:
+      - ./rabbitmq1:/var/lib/rabbitmq
+
+  rabbitmq2:
+    image: rabbitmq:3.12.1-management
+    container_name: rabbitmq2
+    ports:
+      - 5673:5672
+      - 15673:15672
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=cola
+      - RABBITMQ_DEFAULT_USER=eddy
+      - RABBITMQ_DEFAULT_PASS=1170170
+    volumes:
+      - ./rabbitmq2:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq_data:
